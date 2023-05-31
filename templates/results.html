@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter Sentiment Analysis - Results</title>
+</head>
+<body>
+<h1>Twitter Sentiment Analysis - Results</h1>
+
+<h2>Model Results</h2>
+<table>
+    <tr>
+        <th>Model</th>
+        <th>Accuracy</th>
+        <th>Precision</th>
+        <th>Sensitivity</th>
+        <th>Specificity</th>
+        <th>F1 Score</th>
+    </tr>
+    {% for row in model_results.iterrows() %}
+    <tr>
+        <td>{{ row[1]['Model'] }}</td>
+        <td>{{ row[1]['Accuracy'] }}</td>
+        <td>{{ row[1]['Precision'] }}</td>
+        <td>{{ row[1]['Sensitivity'] }}</td>
+        <td>{{ row[1]['Specificity'] }}</td>
+        <td>{{ row[1]['F1 Score'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% if informative_features %}
+<h2>Informative Features</h2>
+<table>
+    <tr>
+        <th>Label</th>
+        <th>Coefficient</th>
+        <th>Feature</th>
+    </tr>
+    {% for feature in informative_features %}
+    <tr>
+        <td>{{ feature[0] }}</td>
+        <td>{{ feature[1] }}</td>
+        <td>{{ feature[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+{% if custom_tweet_result %}
+<h2>Custom Tweet Result</h2>
+<p>{{ custom_tweet_result }}</p>
+{% endif %}
+
+{% if results %}
+<h2>Results Data</h2>
+{% endif %}
+</body>
+</html>

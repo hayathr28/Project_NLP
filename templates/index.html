@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<h1>Model Results</h1>
+{{ results.to_html()|safe }}
+
+<h1>Tweet Classification</h1>
+<form action="{{ url_for('predict') }}" method="POST">
+    <input type="text" name="tweet" placeholder="Enter your tweet" required>
+    <input type="submit" value="Classify">
+</form>
+{% if prediction %}
+<div class="prediction">
+    <h2>Prediction: {{ prediction }}</h2>
+</div>
+{% endif %}
+
+
+</body>
+</html>
+
+
+
+
+
